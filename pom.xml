@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ru.r2cloud</groupId>
 	<artifactId>fcdwClient</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<url>https://github.com/dernasherbrezon/fcdwClient</url>
 	<name>fcdwClient</name>
 	<description>Client for FunCube Data Warehouse</description>
