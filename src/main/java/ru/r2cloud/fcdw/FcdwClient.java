@@ -17,17 +17,17 @@ public class FcdwClient {
 	private final String host;
 	private final String siteId;
 	private final String authCode;
-	private final int timeout;
+	private final int timeoutMillis;
 
 	public FcdwClient(String host, String siteId, String authCode) {
 		this(host, siteId, authCode, DEFAULT_TIMEOUT);
 	}
 
-	public FcdwClient(String host, String siteId, String authCode, int timeout) {
+	public FcdwClient(String host, String siteId, String authCode, int timeoutMillis) {
 		this.host = host;
 		this.siteId = siteId;
 		this.authCode = authCode;
-		this.timeout = timeout;
+		this.timeoutMillis = timeoutMillis;
 	}
 
 	public void upload(byte[] hexFrame) throws IOException, AuthenticationException {
@@ -59,8 +59,8 @@ public class FcdwClient {
 	private void setupRequest(HttpURLConnection conn) {
 		conn.setRequestProperty("Content-Type", "text/plain");
 		conn.setRequestProperty("User-Agent", "FcdwClient 1.0");
-		conn.setReadTimeout(timeout);
-		conn.setConnectTimeout(timeout);
+		conn.setReadTimeout(timeoutMillis);
+		conn.setConnectTimeout(timeoutMillis);
 	}
 
 	private static String readFully(HttpURLConnection conn) throws IOException {
