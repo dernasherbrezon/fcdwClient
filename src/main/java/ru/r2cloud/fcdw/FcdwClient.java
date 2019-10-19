@@ -90,7 +90,7 @@ public class FcdwClient {
 	}
 
 	private static String convertToHex(final byte[] data) {
-		final StringBuffer buf = new StringBuffer();
+		final StringBuilder buf = new StringBuilder();
 		for (final byte element : data) {
 			int halfbyte = (element >>> 4) & HEX_0X0F;
 			int twoHalfs = 0;
