@@ -4,7 +4,7 @@ Client for [FunCube Data Warehouse](http://data.amsat-uk.org/)
 
 ## Usage
 
-* [Register](http://data.amsat-uk.org/) at the warehouse.
+* [Register](http://data.amsat-uk.org/registration) at the warehouse.
 * Confirm your email and make notice of "Site Id" and "Auth Code" from the email
 * Configure pom.xml:
 

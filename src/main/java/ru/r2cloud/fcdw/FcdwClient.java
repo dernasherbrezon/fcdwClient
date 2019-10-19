@@ -50,9 +50,10 @@ public class FcdwClient {
 			conn.disconnect();
 			throw new AuthenticationException(responseBody);
 		}
-		conn.disconnect();
 		if (responseCode != 200) {
-			throw new IOException("invalid response code: " + responseCode);
+			String responseBody = readFully(conn);
+			conn.disconnect();
+			throw new IOException("invalid response code: " + responseCode + ": " + responseBody);
 		}
 	}
 
