@@ -55,11 +55,12 @@ public class FcdwClient {
 			conn.disconnect();
 			throw new IOException("invalid response code: " + responseCode + ": " + responseBody);
 		}
+		conn.disconnect();
 	}
 
 	private void setupRequest(HttpURLConnection conn) {
 		conn.setRequestProperty("Content-Type", "text/plain");
-		conn.setRequestProperty("User-Agent", "FcdwClient 1.0");
+		conn.setRequestProperty("User-Agent", "FcdwClient 1.1");
 		conn.setReadTimeout(timeoutMillis);
 		conn.setConnectTimeout(timeoutMillis);
 	}
