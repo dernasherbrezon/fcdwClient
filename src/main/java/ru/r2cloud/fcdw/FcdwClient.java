@@ -2,23 +2,35 @@ package ru.r2cloud.fcdw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Properties;
 
 public class FcdwClient {
 
 	private static final int HEX_0X0F = 0x0F;
 	private static final int DEFAULT_TIMEOUT = 30_000;
+	
+	private static String USER_AGENT;
 
 	private final String host;
 	private final String siteId;
 	private final String authCode;
 	private final int timeoutMillis;
 
+	static {
+		String version = readVersion();
+		if (version == null) {
+			version = "1.1";
+		}
+		USER_AGENT = "FcdwClient/" + version + " (dernasherbrezon)";
+	}
+	
 	public FcdwClient(String host, String siteId, String authCode) {
 		this(host, siteId, authCode, DEFAULT_TIMEOUT);
 	}
@@ -60,7 +72,7 @@ public class FcdwClient {
 
 	private void setupRequest(HttpURLConnection conn) {
 		conn.setRequestProperty("Content-Type", "text/plain");
-		conn.setRequestProperty("User-Agent", "FcdwClient 1.1");
+		conn.setRequestProperty("User-Agent", USER_AGENT);
 		conn.setReadTimeout(timeoutMillis);
 		conn.setConnectTimeout(timeoutMillis);
 	}
@@ -106,5 +118,19 @@ public class FcdwClient {
 			} while (twoHalfs++ < 1);
 		}
 		return buf.toString();
+	}
+	
+	private static String readVersion() {
+		try {
+			Properties p = new Properties();
+			InputStream is = FcdwClient.class.getClassLoader().getResourceAsStream("/META-INF/maven/ru.r2cloud/fcdwClient/pom.properties");
+			if (is != null) {
+				p.load(is);
+				return p.getProperty("version", null);
+			}
+			return null;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }
