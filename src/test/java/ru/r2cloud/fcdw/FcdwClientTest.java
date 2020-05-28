@@ -49,6 +49,7 @@ public class FcdwClientTest {
 		String hexFrame = "9d6470cd32f4971a56a4d7c7714b40d3";
 		client.upload(hexFrame);
 		assertEquals("aa59205be50bf8dbc22a0dc107ce8781", server.getDigest());
+		assertEquals("FcdwClient/test-1.0 (dernasherbrezon)", server.getUserAgent());
 	}
 
 	@Test

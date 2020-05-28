@@ -19,6 +19,7 @@ public class WarehouseServer {
 	private HttpServer server;
 	private final String siteId;
 	private String digest;
+	private String userAgent;
 	private Integer failureCode;
 	private String failureMessage;
 
@@ -46,6 +47,7 @@ public class WarehouseServer {
 					}
 					return;
 				}
+				userAgent = exchange.getRequestHeaders().getFirst("User-Agent");
 				Map<String, String> requestParameters = splitQuery(exchange.getRequestURI());
 				digest = requestParameters.get("digest");
 				exchange.sendResponseHeaders(200, 0L);
@@ -56,6 +58,10 @@ public class WarehouseServer {
 
 	public String getDigest() {
 		return digest;
+	}
+	
+	public String getUserAgent() {
+		return userAgent;
 	}
 
 	public void setFailure(int statusCode, String message) {

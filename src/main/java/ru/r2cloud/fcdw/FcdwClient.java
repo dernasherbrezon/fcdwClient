@@ -15,8 +15,8 @@ public class FcdwClient {
 
 	private static final int HEX_0X0F = 0x0F;
 	private static final int DEFAULT_TIMEOUT = 30_000;
-	
-	private static String USER_AGENT;
+
+	private static String userAgent;
 
 	private final String host;
 	private final String siteId;
@@ -28,9 +28,9 @@ public class FcdwClient {
 		if (version == null) {
 			version = "1.1";
 		}
-		USER_AGENT = "FcdwClient/" + version + " (dernasherbrezon)";
+		userAgent = "FcdwClient/" + version + " (dernasherbrezon)";
 	}
-	
+
 	public FcdwClient(String host, String siteId, String authCode) {
 		this(host, siteId, authCode, DEFAULT_TIMEOUT);
 	}
@@ -72,7 +72,7 @@ public class FcdwClient {
 
 	private void setupRequest(HttpURLConnection conn) {
 		conn.setRequestProperty("Content-Type", "text/plain");
-		conn.setRequestProperty("User-Agent", USER_AGENT);
+		conn.setRequestProperty("User-Agent", userAgent);
 		conn.setReadTimeout(timeoutMillis);
 		conn.setConnectTimeout(timeoutMillis);
 	}
@@ -119,12 +119,11 @@ public class FcdwClient {
 		}
 		return buf.toString();
 	}
-	
+
 	private static String readVersion() {
-		try {
-			Properties p = new Properties();
-			InputStream is = FcdwClient.class.getClassLoader().getResourceAsStream("/META-INF/maven/ru.r2cloud/fcdwClient/pom.properties");
+		try (InputStream is = FcdwClient.class.getClassLoader().getResourceAsStream("META-INF/maven/ru.r2cloud/fcdwClient/pom.properties")) {
 			if (is != null) {
+				Properties p = new Properties();
 				p.load(is);
 				return p.getProperty("version", null);
 			}
