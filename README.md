@@ -12,7 +12,7 @@ Client for [FunCube Data Warehouse](http://data.amsat-uk.org/)
 <dependency>
     <groupId>ru.r2cloud</groupId>
     <artifactId>fcdwClient</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 * Configure client:
@@ -20,4 +20,6 @@ Client for [FunCube Data Warehouse](http://data.amsat-uk.org/)
 ```java
 FcdwClient client = new FcdwClient("http://data.amsat-uk.org", SITE_ID, AUTH_CODE);
 client.upload("9d6470cd32f4971a56a4d7c7714b40d3");
+// or
+client.upload(byteArray);
 ```
