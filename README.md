@@ -1,4 +1,4 @@
-## About [![Build Status](https://travis-ci.org/dernasherbrezon/fcdwClient.svg?branch=master)](https://travis-ci.org/dernasherbrezon/fcdwClient) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ru.r2cloud%3AfcdwClient&metric=alert_status)](https://sonarcloud.io/dashboard?id=ru.r2cloud%3AfcdwClient)
+## About [![Build Status](https://travis-ci.com/dernasherbrezon/fcdwClient.svg?branch=master)](https://travis-ci.com/dernasherbrezon/fcdwClient) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ru.r2cloud%3AfcdwClient&metric=alert_status)](https://sonarcloud.io/dashboard?id=ru.r2cloud%3AfcdwClient)
 
 Client for [FunCube Data Warehouse](http://data.amsat-uk.org/)
 
