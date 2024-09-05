@@ -26,7 +26,7 @@ public class FcdwClient {
 	static {
 		String version = readVersion();
 		if (version == null) {
-			version = "1.2";
+			version = "1.4";
 		}
 		userAgent = "FcdwClient/" + version + " (dernasherbrezon)";
 	}
