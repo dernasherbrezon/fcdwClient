@@ -26,7 +26,7 @@ public class FcdwClient {
 	static {
 		String version = readVersion();
 		if (version == null) {
-			version = "1.1";
+			version = "1.2";
 		}
 		userAgent = "FcdwClient/" + version + " (dernasherbrezon)";
 	}
@@ -71,7 +71,7 @@ public class FcdwClient {
 	}
 
 	private void setupRequest(HttpURLConnection conn) {
-		conn.setRequestProperty("Content-Type", "text/plain");
+		conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		conn.setRequestProperty("User-Agent", userAgent);
 		conn.setReadTimeout(timeoutMillis);
 		conn.setConnectTimeout(timeoutMillis);
